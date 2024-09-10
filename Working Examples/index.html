@@ -1,0 +1,74 @@
+<!--
+  Ryan Root
+  8/21/24
+  HTML Working Example for ESP32 WebPage
+-->
+
+<!DOCTYPE html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <h1>Control Your RGB Strip</h1>
+
+      <style>
+        h1 {
+          color: black;
+          text-align: center;
+        }
+
+        h2 {
+          text-align: center;
+        }
+
+        button {
+          font-size: larger;
+          border-radius: 12px;
+          background-color: gainsboro;
+          padding: 10px 15px;
+        }
+
+        form {
+          text-align: center;
+          font-size: medium;
+        }
+      </style>
+  </head>
+  <body>
+    <h2>
+      Enter a value between 0 and 255 for each of the following colors:
+    </h2>
+
+    <script>
+      const url = 'http://127.0.0.1:5500/index.html?';
+
+      function get_color() {;
+        var red_val = document.getElementById("red").value;
+        var green_val = document.getElementById("green").value;
+        var blue_val = document.getElementById("blue").value;
+
+        const obj = {
+          r: red_val,
+          g: green_val,
+          b: blue_val,
+        };
+
+        const search_params = new URLSearchParams(obj);
+        const query_string = search_params.toString();
+        window.location.href = url + query_string;
+      }
+    </script>
+        
+    <form>
+      Red:
+      <input type = "text" size = "12" id = "red">
+
+      Green:
+      <input type = "text" size = "12" id = "green">
+
+      Blue:
+      <input type = "text" size = "12" id = "blue">
+
+      <button type = "button" onclick = "get_color()" >Apply</button>
+    </form>
+  </body>
+</html>
