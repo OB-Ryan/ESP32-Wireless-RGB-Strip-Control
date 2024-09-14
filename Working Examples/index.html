@@ -39,8 +39,6 @@
     </h2>
 
     <script>
-      const url = 'http://127.0.0.1:5500/index.html?';
-
       function get_color() {;
         var red_val = document.getElementById("red").value;
         var green_val = document.getElementById("green").value;
@@ -54,7 +52,8 @@
 
         const search_params = new URLSearchParams(obj);
         const query_string = search_params.toString();
-        window.location.href = url + query_string;
+        const new_url = window.location.origin + '/?' + query_string + "END";
+        window.location.href = new_url;
       }
     </script>
         
