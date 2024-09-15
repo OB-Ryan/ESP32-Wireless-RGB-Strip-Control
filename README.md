@@ -11,9 +11,9 @@ There are a handful of materials needed for this project, all of which can be fo
 
 
 ## **Circuit Design:**
-The wiring for this project is relatively simple, and a pictorial made in Tinkercad can be seen below for reference. 
+The wiring for this project is relatively simple, and a pictorial made in Tinkercad can be seen below for reference.
 
-Three different GPIO pins will be connected to the base of the transistors, while the emitter should be connected to ground, and the collector to the RGB strip's respective color pin. Ensure that the transistors chosen for the project can handle the current that will be passed through them. I am using three [S8050](https://components101.com/transistors/s8050-transistor-pinout-equivalent-datasheet) NPN-type transistors, which have an EBC pinout. 
+Three different GPIO pins will be connected to the base of the transistors, while the emitter should be connected to ground, and the collector to the RGB strip's respective color pin. Note that in the wiring pictorial these pins go to a header in the bottom left, this is a placeholder for the RGB strip connection. Ensure that the transistors chosen for the project can handle the current that will be passed through them. I am using three [S8050](https://components101.com/transistors/s8050-transistor-pinout-equivalent-datasheet) NPN-type transistors, which have an EBC pinout. 
 
 If using a 5V RGB strip, it can be powered directly from the VIN pin on the ESP32. This assumes that you are powering the ESP32 through the 5V USB type C (sometimes micro USB) connection on the front of the board. If the strip used requires more than 5V, or the board cannot provide succficent power, and external power source may be used. If using an external power source ensure that there is a common ground shared between the board and the power supply.
 
@@ -34,7 +34,7 @@ For PWM control over the RGB LED strip, we will be using the ledc library. This 
 
 For wifi connections, we will use the WiFi Arduino library, which can be installed directly from the library manager in the Arduino IDE. Documentation for this library can be found [here](https://www.arduino.cc/reference/en/libraries/wifi/).
 
-The web page itself is an HTML file that uses CSS for styling and a short Javascript script. It will display a form that allows users to input values between 0 and 255 for each RGB value. These values are then appended to a query string on the URL, and grabbed by the ESP32 to make changes to the RGB strip. The HTML page can be found in the repo at [Working Examples/index](Working%20Examples/index.html).
+The web page itself is an HTML file that uses CSS for styling and a short Javascript script. It will display a form that allows users to input values between 0 and 255 for each RGB value. These values are then appended to a query string on the URL, and read by the ESP32 to make changes to the RGB strip. The HTML page can be found in the repo at [Working Examples/index](Working%20Examples/index.html).
 
 
 ![](https://github.com/user-attachments/assets/8f7f4a08-d5a6-4a3b-8b12-5115b76e43d3)
