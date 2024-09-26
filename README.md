@@ -6,16 +6,16 @@ Use an ESP32 microcontroller to wirelessly connect to and control an RGB LED str
 
 
 
-## **Materials:**
+## **Materials**
 There are a handful of materials needed for this project, all of which can be found for purchase at various places online. This includes an **ESP32 Microcontroller**, and basic prototyping equipment such as a **breadboard** and **jumper wires**. Also needed will be an **RGB LED Strip**. The RGB strip used in this project is a 5V, 4-pin strip with a common cathode. Some type of **power delivery transistor/mosfet** will be needed as well, which should be chosen based on your power needs. More on this in the Circuit Design section.
 
 
-## **Circuit Design:**
+## **Circuit Design**
 The wiring for this project is relatively simple, and a pictorial made in Tinkercad can be seen below for reference.
 
 Three different GPIO pins will be connected to the base of the transistors, while the emitter should be connected to ground, and the collector to the RGB strip's respective color pin. Note that in the wiring pictorial these pins go to a header in the bottom left, this is a placeholder for the RGB strip connection. Ensure that the transistors chosen for the project can handle the current that will be passed through them. I am using three [S8050](https://components101.com/transistors/s8050-transistor-pinout-equivalent-datasheet) NPN-type transistors, which have an EBC pinout. 
 
-If using a 5V RGB strip, it can be powered directly from the VIN pin on the ESP32. This assumes that you are powering the ESP32 through the 5V USB type C (sometimes micro USB) connection on the front of the board. If the strip used requires more than 5V, or the board cannot provide succficent power, and external power source may be used. If using an external power source ensure that there is a common ground shared between the board and the power supply.
+If using a 5V RGB strip, it can be powered directly from the VIN pin on the ESP32. This assumes that you are powering the ESP32 through the 5V USB type C (sometimes micro USB) connection on the front of the board. If the strip used requires more than 5V, or the board cannot provide sufficient power, an external power source may be used. If using an external power source ensure that there is a common ground shared between the board and the power supply.
 
 ***Use extra caution when using the VIN pin, as it has NO reverse polarity protection.***
 
@@ -27,8 +27,8 @@ If using a 5V RGB strip, it can be powered directly from the VIN pin on the ESP3
 
 
 
-## **Code:**
-I used the Arduino IDE to write and compile/upload code to my ESP32 for this project. This requires some setup in the Arduino IDE, if you have not used the Arduino IDE with an ESP32 before, you will need Arduino Core for the ESP32 installed. Follow this [installation guide](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html) from Espressif.
+## **Code**
+I used the Arduino IDE to write and compile/upload code to my ESP32 for this project. This requires some setup in the Arduino IDE, if you have not used the Arduino IDE with an ESP32 before, you will need Arduino Core for the ESP32 installed. Follow this [installation guide](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html) from Espressif. For this project to work correctly, you will need to update the `ssid` and `password` variables to match that of your own network in [RGB_Web_Server.ino](RGB_Web_Server.ino).
 
 For PWM control over the RGB LED strip, we will be using the ledc library. This is included in Arduino Core, and the documentation for it can be found [here](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html#arduino-esp32-ledc-api). An example of strictly PWM control can be found in the repo at [Working Examples/RGB_PWM](Working%20Examples/RGB_PWM.ino).
 
